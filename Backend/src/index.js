@@ -1,20 +1,20 @@
-require("dotenv").config();
+const dotenv = require("dotenv");
 const express = require("express");
 const cors = require("cors");
-const connectDB = require("../src/db/connectDB");
+const connectDB = require("../src/db/connectDB");  
 const app = express();
-
+ 
+dotenv.config();
 app.use(cors());
-app.use(express.json());
+app.use(express.json());   
 
 app.get("/", (req, res) => {
   res.send("backend learning");
-});
-app.get("/login", (req, res) => {
-  res.send("login successfull!");
-});
+});  
 
+// connect to database
 connectDB();
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("server is runing on this port 5000");
